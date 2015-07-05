@@ -1,0 +1,12 @@
+{ 
+  "name": "Threaded SMS",
+  "author": "Jeremy mizell <mizellj@ottercove.net>",
+  "description": "Threading SMS page.",
+  "url": "http://ottercove.net",
+  "links": [{
+    "menu": "SMS",
+    "url": "messages",
+    "script": "plugin.php",
+    "label": "Messages"
+  }]
+}
