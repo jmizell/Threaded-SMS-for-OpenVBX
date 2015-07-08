@@ -46,11 +46,28 @@
         <a href="" class="delete-button link-button"><span>Delete</span></a>
       </li>
     </ul><!-- .vbx-menu-items -->
+    <div class="pagination">
+      <?php if (sizeof($allthreads[$to]) > $threads_per_page): ?>
+        <?php foreach(range(0, sizeof($allthreads[$to]), $threads_per_page) as $offset): ?>
+          <?php if ($offset == $threads_offset): ?>
+            <span class="current"><?php echo ($offset / $threads_per_page + 1);?></span>
+          <?php else: ?>
+            <span class="num"><a href="<?php echo site_url("p/messages?offset=" . $offset . "&to=" . urlencode($to)) ?>"><?php echo ($offset / $threads_per_page + 1);?></a></span>
+          <?php endif ?>
+        <?php endforeach; ?>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=" . ($threads_offset + $threads_per_page) . "&to=" . urlencode($to)) ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads) - $threads_per_page) . "&to=" . urlencode($to)) ?>">»</a></span>
+      <?php else: ?>
+        <span class="current">1</span>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=0&to=" . urlencode($to)) ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=0&to=" . urlencode($to)) ?>">»</a></span>
+      <?php endif ?>
+    </div>	
   </div><!-- .vbx-content-menu -->
   
     <table border="0" class="vbx-items-grid">
     <tbody>
-      <?php foreach($threads[$to] as $message): ?>
+      <?php foreach($threads as $message): ?>
       <tr rel="<?php echo $message['id'] ?>" class="message-row sms-type <?php echo ($message['status'])? 'unread' : 'read'?>">
         <td class="message-select">
           <div style="padding: 6px">
@@ -101,4 +118,38 @@
       </tr>
       <?php endforeach ?>
     </tbody>
-  </table><!-- .vbx-items-grid --> 
+  </table><!-- .vbx-items-grid -->
+  
+  <div class="vbx-content-menu vbx-content-menu-bottom">
+    <ul class="inbox-menu vbx-menu-items-left">
+      <li class="menu-item">
+        <a href="" class="dropdown-select-button link-button"><span>Select</span></a>
+        <ul class="hide">
+          <li><a class="select select-all" href="">Select All</a></li>
+          <li><a class="select select-none" href="">Select None</a></li>
+          <li><a class="select select-read" href="">Select Read</a></li>
+          <li><a class="select select-unread" href="">Select Unread</a></li>
+        </ul>
+      </li>
+      <li class="menu-item">
+        <a href="" class="delete-button link-button"><span>Delete</span></a>
+      </li>
+    </ul><!-- .vbx-menu-items -->
+    <div class="pagination">
+      <?php if (sizeof($allthreads[$to]) > $threads_per_page): ?>
+        <?php foreach(range(0, sizeof($allthreads[$to]), $threads_per_page) as $offset): ?>
+          <?php if ($offset == $threads_offset): ?>
+            <span class="current"><?php echo ($offset / $threads_per_page + 1);?></span>
+          <?php else: ?>
+            <span class="num"><a href="<?php echo site_url("p/messages?offset=" . $offset . "&to=" . urlencode($to)) ?>"><?php echo ($offset / $threads_per_page + 1);?></a></span>
+          <?php endif ?>
+        <?php endforeach; ?>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=" . ($threads_offset + $threads_per_page) . "&to=" . urlencode($to)) ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads) - $threads_per_page) . "&to=" . urlencode($to)) ?>">»</a></span>
+      <?php else: ?>
+        <span class="current">1</span>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=0&to=" . urlencode($to)) ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=0&to=" . urlencode($to)) ?>">»</a></span>
+      <?php endif ?>
+    </div>	
+  </div><!-- .vbx-content-menu -->

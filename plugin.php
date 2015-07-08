@@ -23,11 +23,19 @@ if ( $to != "" ) {
 
 // Set a limit of items per page
 $limit = 100;
-$threads = getMessageThreads($account, $limit, $phoneNumbers);
+$threads_per_page = 20;
+$threads_offset = filter_var($_REQUEST['offset'], FILTER_SANITIZE_NUMBER_INT);
+if ( $threads_offset == "" ) {
+  $threads_offset = 0;
+}
+$allthreads = getMessageThreads($account, $limit, $phoneNumbers);
+
 
 if ( $function == "contact" ) {
+  $threads = array_slice($allthreads[$to], $threads_offset, $threads_per_page);
   include("view-single-thread.php"); 
 } else {
+  $threads = array_slice($allthreads, $threads_offset, $threads_per_page);
   include("view-threads-list.php"); 
 }
 ?>

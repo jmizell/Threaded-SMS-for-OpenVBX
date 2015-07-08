@@ -11,8 +11,25 @@
       </li>
       <li class="menu-item">
         <a href="" class="delete-button link-button"><span>Delete</span></a>
-      </li>-->
-    </ul><!-- .vbx-menu-items -->
+      </li>
+    </ul>--><!-- .vbx-menu-items -->
+    <div class="pagination">
+      <?php if (sizeof($allthreads) > $threads_per_page): ?>
+        <?php foreach(range(0, sizeof($allthreads), $threads_per_page) as $offset): ?>
+          <?php if ($offset == $threads_offset): ?>
+            <span class="current"><?php echo ($offset / $threads_per_page + 1);?></span>
+          <?php else: ?>
+            <span class="num"><a href="<?php echo site_url("p/messages?offset=" . $offset) ?>"><?php echo ($offset / $threads_per_page + 1);?></a></span>
+          <?php endif ?>
+        <?php endforeach; ?>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=" . ($threads_offset + $threads_per_page)) ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads) - $threads_per_page)) ?>">»</a></span>
+      <?php else: ?>
+        <span class="current">1</span>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=0") ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=0") ?>">»</a></span>
+      <?php endif ?>
+    </div>	
   </div><!-- .vbx-content-menu -->
   <table border="0" class="vbx-items-grid">
     <tbody>
@@ -95,6 +112,23 @@
       </li>
       <li class="menu-item">
         <a href="" class="delete-button link-button"><span>Delete</span></a>
-      </li>-->
-    </ul><!-- .vbx-menu-items -->
+      </li>
+    </ul>--><!-- .vbx-menu-items -->
+    <div class="pagination">
+      <?php if (sizeof($allthreads) > $threads_per_page): ?>
+        <?php foreach(range(0, sizeof($allthreads), $threads_per_page) as $offset): ?>
+          <?php if ($offset == $threads_offset): ?>
+            <span class="current"><?php echo ($offset / $threads_per_page + 1);?></span>
+          <?php else: ?>
+            <span class="num"><a href="<?php echo site_url("p/messages?offset=" . $offset) ?>"><?php echo ($offset / $threads_per_page + 1);?></a></span>
+          <?php endif ?>
+        <?php endforeach; ?>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=" . ($threads_offset + $threads_per_page)) ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads) - $threads_per_page)) ?>">»</a></span>
+      <?php else: ?>
+        <span class="current">1</span>
+        <span class="next"><a href="<?php echo site_url("p/messages?offset=0") ?>">Next</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=0") ?>">»</a></span>
+      <?php endif ?>
+    </div>	
   </div><!-- .vbx-content-menu -->
