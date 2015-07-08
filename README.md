@@ -1,3 +1,4 @@
 # Threaded-SMS-for-OpenVBX
 
-A threaded SMS plugin for OpenVBX
+A simple plugin that groups sms messages by recepient. 
+
