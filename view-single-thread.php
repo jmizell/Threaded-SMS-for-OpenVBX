@@ -56,7 +56,7 @@
           <?php endif ?>
         <?php endforeach; ?>
         <span class="next"><a href="<?php echo site_url("p/messages?offset=" . ($threads_offset + $threads_per_page) . "&to=" . urlencode($to)) ?>">Next</a></span>
-        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads) - $threads_per_page) . "&to=" . urlencode($to)) ?>">»</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads[$to]) - $threads_per_page) . "&to=" . urlencode($to)) ?>">»</a></span>
       <?php else: ?>
         <span class="current">1</span>
         <span class="next"><a href="<?php echo site_url("p/messages?offset=0&to=" . urlencode($to)) ?>">Next</a></span>
@@ -145,7 +145,7 @@
           <?php endif ?>
         <?php endforeach; ?>
         <span class="next"><a href="<?php echo site_url("p/messages?offset=" . ($threads_offset + $threads_per_page) . "&to=" . urlencode($to)) ?>">Next</a></span>
-        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads) - $threads_per_page) . "&to=" . urlencode($to)) ?>">»</a></span>
+        <span class="last"><a href="<?php echo site_url("p/messages?offset=" . (sizeof($allthreads[$to]) - $threads_per_page) . "&to=" . urlencode($to)) ?>">»</a></span>
       <?php else: ?>
         <span class="current">1</span>
         <span class="next"><a href="<?php echo site_url("p/messages?offset=0&to=" . urlencode($to)) ?>">Next</a></span>
